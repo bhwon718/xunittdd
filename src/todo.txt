@@ -2,3 +2,6 @@
 [X] setUp 먼저 실행
 [ ] tearDown 나중에 실행 - 비록 실패 했다고 하더라도
 [ ] 테스트 결과 수집
+
+xUnit 테스팅 프레임워크를 TDD로 만들어보자
+https://www.youtube.com/watch?v=tdKFZcZSJmg
