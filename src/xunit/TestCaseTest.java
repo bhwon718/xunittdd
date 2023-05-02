@@ -5,6 +5,16 @@ public class TestCaseTest extends TestCase {
         super(name);
     }
 
+    public static TestSuite suite() {
+        TestSuite testSuite = new TestSuite();
+        testSuite.add(new TestCaseTest("testTemplateMethod"));
+        testSuite.add(new TestCaseTest("testResult"));
+        testSuite.add(new TestCaseTest("testFaildResultFormatting"));
+        testSuite.add(new TestCaseTest("testFailedResult"));
+        testSuite.add(new TestCaseTest("testSuite"));
+        return testSuite;
+    }
+
     public void testTemplateMethod() {
         WasRun wasRun = new WasRun("testMethod");
         TestResult testResult = new TestResult();
