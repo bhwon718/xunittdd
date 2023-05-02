@@ -10,7 +10,11 @@ public class TestCase {
         this.name = name;
     }
 
-    public void run() {
+    public TestReslt run() {
+
+        TestReslt testReslt = new TestReslt();
+        testReslt.testStarted();
+
         setUp();
         try {
             Method method = getClass().getMethod(name);
@@ -18,6 +22,12 @@ public class TestCase {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
+        
+        tearDown();
+        return testReslt;
+    }
+
+    public void tearDown() {
     }
 
     public void setUp() {
