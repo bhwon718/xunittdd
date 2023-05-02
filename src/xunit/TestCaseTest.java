@@ -6,12 +6,7 @@ public class TestCaseTest extends TestCase {
     }
 
     public static TestSuite suite() {
-        TestSuite testSuite = new TestSuite();
-        testSuite.add(new TestCaseTest("testTemplateMethod"));
-        testSuite.add(new TestCaseTest("testResult"));
-        testSuite.add(new TestCaseTest("testFaildResultFormatting"));
-        testSuite.add(new TestCaseTest("testFailedResult"));
-        testSuite.add(new TestCaseTest("testSuite"));
+        TestSuite testSuite = new TestSuite(TestCaseTest.class);
         return testSuite;
     }
 
@@ -22,14 +17,14 @@ public class TestCaseTest extends TestCase {
         Assert.assertEquals("setUp testMethod tearDown", wasRun.log);
     }
 
-    public void testResult(){
+    public void testResult() {
         WasRun wasRun = new WasRun("testMethod");
         TestResult testResult = new TestResult();
         wasRun.run(testResult);
         Assert.assertEquals("1 run, 0 failed", testResult.Summary());
     }
 
-    public void testFaildResultFormatting(){
+    public void testFaildResultFormatting() {
         TestResult testResult = new TestResult();
         testResult.testStarted();
         testResult.testFaild();
@@ -43,7 +38,7 @@ public class TestCaseTest extends TestCase {
         Assert.assertEquals("1 run, 1 failed", testResult.Summary());
     }
 
-    public void testSuite(){
+    public void testSuite() {
         TestSuite suite = new TestSuite();
         suite.add(new WasRun("testMethod"));
         suite.add(new WasRun("testBrokenMethod"));
