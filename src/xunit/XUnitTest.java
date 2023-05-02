@@ -2,12 +2,16 @@ package xunit;
 
 public class XUnitTest {
     public static void main(String[] args) {
+        TestSuite testSuite = new TestSuite();
+        testSuite.add(new TestCaseTest("testTemplateMethod"));
+        testSuite.add(new TestCaseTest("testResult"));
+        testSuite.add(new TestCaseTest("testFaildResultFormatting"));
+        testSuite.add(new TestCaseTest("testFailedResult"));
+        testSuite.add(new TestCaseTest("testSuite"));
+
         TestResult testResult = new TestResult();
-        new TestCaseTest("testTemplateMethod").run(testResult);
-        new TestCaseTest("testResult").run(testResult);
-        new TestCaseTest("testFaildResultFormatting").run(testResult);
-        new TestCaseTest("testFailedResult").run(testResult);
-        new TestCaseTest("testSuite").run(testResult);
+        testSuite.run(testResult);
+
         System.out.println(testResult.Summary());
     }
 }
