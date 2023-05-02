@@ -1,6 +1,5 @@
 package xunit;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class TestCase {
@@ -10,21 +9,18 @@ public class TestCase {
         this.name = name;
     }
 
-    public TestReslt run() {
-
-        TestReslt testReslt = new TestReslt();
-        testReslt.testStarted();
-
+    public TestResult  run(TestResult testResult) {
+        testResult.testStarted();
         setUp();
         try {
             Method method = getClass().getMethod(name);
             method.invoke(this);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            testResult.testFaild();
         }
         
         tearDown();
-        return testReslt;
+        return testResult;
     }
 
     public void tearDown() {
